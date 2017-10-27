@@ -1,25 +1,23 @@
 <ion-header>
   <ion-navbar color = "primary">
     <ion-title>
-      Sonidos App
+      Clientes
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-refresher (ionRefresh)="recargar_animales($event)">
+  <ion-refresher (ionRefresh)="recargar_clientes($event)">
   <ion-refresher-content></ion-refresher-content>
 </ion-refresher>
 <ion-list reorder="true">
-  <ion-item-sliding *ngFor="let animal of animales; let i= index">
-    <ion-item
-      (click)="reproducir ( animal )">
-      <ion-avatar item-start>
-        <img [src]="animal.imagen">
-      </ion-avatar>
-      <h2>{{animal.nombre}}</h2>
-      <ion-icon *ngIf="!animal.reproduciendo" name="play" item-end></ion-icon>
-      <ion-icon *ngIf="animal.reproduciendo" name="pause" item-end></ion-icon>
+  <ion-item-sliding *ngFor="let cliente of clienteServices.clienteList; let i= index">
+    <ion-item>
+      <h1>{{cliente.nombre}}</h1>
+      <h2>Id: {{cliente.id}}</h2>
+      <h3>Telefono: {{cliente.telefono}}</h3>
+      <h3>Email: {{cliente.correo}}</h3>
+      <h3>Dirección: {{cliente.direccion}}</h3>
     </ion-item>
 
     <ion-item-options side="right">
@@ -40,4 +38,7 @@
 
   </ion-item-sliding>
 </ion-list>
+<ion-fab right bottom>
+  <button ion-fab class="fixed" (click)="cargarClientes()"><ion-icon name="add"></ion-icon></button>
+</ion-fab>
 </ion-content>

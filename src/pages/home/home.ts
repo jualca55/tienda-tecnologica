@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Refresher } from "ionic-angular";
 import { ANIMALES } from "../../data/data.animales";
 import { Animal } from "../../interfaces/animal.interface";
+import { ClienteServicesProvider } from '../../providers/cliente-services/cliente-services';
+
 
 @Component({
   selector: 'page-home',
@@ -11,9 +13,19 @@ export class HomePage {
   animales:Animal[] = [];
   audio= new Audio();
   audioTiempo: any;
+  clientes: string[];
 
-  constructor() {
+  constructor(private clienteServices: ClienteServicesProvider) {
     this.animales = ANIMALES.slice(0);
+  }
+
+  ngOnInit() {
+    this.clienteServices.getCliente();
+  }
+
+  cargarClientes(){
+    this.clienteServices.getCliente();
+    console.log(this.clienteServices.clienteList);
   }
 
   private pausar_audio(animalSel:Animal)
@@ -51,12 +63,12 @@ export class HomePage {
     this.animales.splice(idx, 1);
   }
   
-  recargar_animales(Refresher:Refresher)
+  recargar_clientes(Refresher:Refresher)
   {
     console.log("Inicio del refresh");
     setTimeout(()=>{
       console.log("Terminó el refresh");
-      this.animales=ANIMALES.slice(0);
+      this.clienteServices.getCliente();
       Refresher.complete();
     }, 1500 );
   }
