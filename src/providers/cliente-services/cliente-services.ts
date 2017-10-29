@@ -43,17 +43,14 @@ export class ClienteServicesProvider {
 
   public searchClienteById(clienteToSearch: Cliente) {
     this.clienteSearched = new Cliente();
-    const body = {id: clienteToSearch.id};
     this.http.get('http://192.168.0.9:8080/tienda/webresources/entidades.cliente/' + clienteToSearch.id)
     .subscribe(data => {
       this.clienteSearched = data as Cliente;
-      console.log(this.clienteSearched.id);
     });
   }
 
-  public deleteCliente(cliente: Cliente) {
-    const body = { id: cliente.id };
-    this.http.delete('http://192.168.0.9:8080/tienda/webresources/entidades.cliente' + body)
+  public deleteCliente(idCliente: string) {
+    this.http.delete('http://192.168.0.9:8080/tienda/webresources/entidades.cliente/' + idCliente)
     .subscribe(data => {
     });
   }

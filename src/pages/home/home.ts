@@ -3,7 +3,6 @@ import { Refresher, NavController, NavParams } from "ionic-angular";
 import { ClienteServicesProvider } from '../../providers/cliente-services/cliente-services';
 import { NewClientePage } from '../../pages/new-cliente/new-cliente';
 import { EditClientePage } from '../../pages/edit-cliente/edit-cliente';
-import { Cliente } from '../../interfaces/cliente.interface';
 
 
 @Component({
@@ -35,6 +34,10 @@ export class HomePage {
     this.navCtrl.push(EditClientePage, {
       id
       });
+  }
+
+  borrarCliente(id: string){
+    this.clienteServices.deleteCliente(id);
   }
   
   recargar_clientes(Refresher:Refresher)
