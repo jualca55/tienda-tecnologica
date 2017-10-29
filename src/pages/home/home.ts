@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Refresher, NavController } from "ionic-angular";
+import { Refresher, NavController, NavParams } from "ionic-angular";
 import { ClienteServicesProvider } from '../../providers/cliente-services/cliente-services';
 import { NewClientePage } from '../../pages/new-cliente/new-cliente';
+import { EditClientePage } from '../../pages/edit-cliente/edit-cliente';
+import { Cliente } from '../../interfaces/cliente.interface';
 
 
 @Component({
@@ -14,6 +16,7 @@ export class HomePage {
 
   constructor(
     public navCtrl: NavController,
+    private navParams: NavParams,
     private clienteServices: ClienteServicesProvider
     ) {
   }
@@ -27,7 +30,12 @@ export class HomePage {
     this.navCtrl.push(NewClientePage, {
       });
   }
-
+  
+  editarCliente(id: string){
+    this.navCtrl.push(EditClientePage, {
+      id
+      });
+  }
   
   recargar_clientes(Refresher:Refresher)
   {

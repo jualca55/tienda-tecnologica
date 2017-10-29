@@ -25,10 +25,9 @@ export class NewClientePage {
    ) {
   }
 
-  guardarClientes(){
-    this.clienteServices.saveClientes(this.cliente);
+  guardarCliente(){
+    this.clienteServices.saveCliente(this.cliente);
     this.navCtrl.setRoot(HomePage);
-
   }
 
   ionViewDidLoad() {

@@ -1,0 +1,41 @@
+
+<ion-header>
+  
+    <ion-navbar>
+      <ion-title>Modificar Cliente</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  <ion-content padding>
+    <form (ngSubmit)="editarCliente()">
+      <button ion-button type="button" class="btn btn-success" (click)="cargarCliente() ">Cargar Datos</button>
+      <ion-list>
+        <ion-item>
+          <ion-label stacked>Id:</ion-label>
+          <ion-input type="text" placeholder="Ingrese el ID" [(ngModel)]="cliente.id" name="id"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label stacked>Nombre:</ion-label>
+          <ion-input type="text" placeholder="Ingrese el Nombre" [(ngModel)]="cliente.nombre" name="nombre"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label stacked>Telefono:</ion-label>
+          <ion-input type="text" placeholder="Ingrese el Telefono" [(ngModel)]="cliente.telefono" name="telefono"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label stacked>Correo:</ion-label>
+          <ion-input type="text" placeholder="Ingrese el Correo" [(ngModel)]="cliente.correo" name="correo"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label stacked>Dirección:</ion-label>
+          <ion-input type="text" placeholder="Ingrese la Dirección" [(ngModel)]="cliente.direccion" name="direccion"></ion-input>
+        </ion-item>
+        
+      </ion-list>
+      <div padding>
+        <button ion-button block type="submit">Guardar</button>
+      </div>
+    </form>
+  </ion-content>
+  
